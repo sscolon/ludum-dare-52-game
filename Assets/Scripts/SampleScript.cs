@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SampleScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _movementSpeed;
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //Just some movement
+        float x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * _movementSpeed;
+        float y = Input.GetAxisRaw("Vertical") * Time.deltaTime * _movementSpeed;
+        transform.position += new Vector3(x, y, 0);
     }
 }
