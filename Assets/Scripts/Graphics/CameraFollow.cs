@@ -20,6 +20,8 @@ namespace Mechanizer
 
         private void UpdateShake()
         {
+            if (_shakeDuration <= 0)
+                return;
             _shakeTime -= Time.deltaTime;
             float max = _shakeStrength * (_shakeTime / _shakeDuration);
             float x = Random.Range(-max, max);
