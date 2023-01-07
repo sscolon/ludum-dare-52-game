@@ -381,6 +381,23 @@ MonoBehaviour:
   _dodgeRollSpeed: 10
   _dodgeRollDistance: 5
   _flipSpeed: 10
+  _footstepFeedback:
+    useRandomSound: 0
+    sounds: []
+    useRandomSpawn: 0
+    spawns: []
+    useScreenshake: 0
+    screenshakeStrength: 10
+    screenshakeDuration: 0.2
+  _dodgeRollFeedback:
+    useRandomSound: 0
+    sounds:
+    - {fileID: 8300000, guid: 708d1cc60c69eee41a0ed6709dd38213, type: 3}
+    useRandomSpawn: 0
+    spawns: []
+    useScreenshake: 0
+    screenshakeStrength: 10
+    screenshakeDuration: 0.2
 --- !u!114 &4343946066972141637
 MonoBehaviour:
   m_ObjectHideFlags: 0

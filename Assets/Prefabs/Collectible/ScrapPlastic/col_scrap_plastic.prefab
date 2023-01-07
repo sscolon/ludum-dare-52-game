@@ -186,7 +186,8 @@ MonoBehaviour:
     screenshakeDuration: 0.2
   _collectFeedback:
     useRandomSound: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 3a087326023392d4b87cfcc0035900c2, type: 3}
     useRandomSpawn: 0
     spawns: []
     useScreenshake: 0
