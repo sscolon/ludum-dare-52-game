@@ -17,6 +17,10 @@ namespace Mechanizer
         [SerializeField] private float _spawnSpeed = 3f;
         [SerializeField] private float _collectSpeed = 3f;
         [SerializeField] private int _weight;
+
+        [Header("Feedback")]
+        [SerializeField] private Feedback _spawnFeedback;
+        [SerializeField] private Feedback _collectFeedback;
         public Sprite Icon { get => _icon; set => _icon = value; }
         public string CollectibleTag { get => _collectibleTag; set => _collectibleTag = value; }
         public bool IsCollected { get => _isCollected; set => _isCollected = value; }
@@ -33,6 +37,7 @@ namespace Mechanizer
 
         private IEnumerator SpawnRoutine()
         {
+            _spawnFeedback.CreateFeedback(gameObject);
             _spriteRenderer.transform.localScale = Vector3.zero;
             _spriteRenderer.material = _spriteDefaultMaterial;
 
@@ -64,6 +69,7 @@ namespace Mechanizer
 
         private IEnumerator CollectRoutine()
         {
+            _collectFeedback.CreateFeedback(gameObject);
             _spriteRenderer.material = _spriteWhiteMaterial;
             Vector3 targetSize = new Vector3(3f, 0f, 0f);
             float time = 0f;

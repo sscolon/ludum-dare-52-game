@@ -23,6 +23,10 @@ namespace Mechanizer
         [SerializeField] private float _dodgeRollSpeed;
         [SerializeField] private float _dodgeRollDistance;
         [SerializeField] private float _flipSpeed;
+
+        [Header("Feedback")]
+        [SerializeField] private Feedback _footstepFeedback;
+        [SerializeField] private Feedback _dodgeRollFeedback;
         public float Acceleration { get => _acceleration; set => _acceleration = value; }
         public float Deceleration { get => _deceleration; set => _deceleration = value; }
         public float MovementSpeed { get => _movementSpeed; set => _movementSpeed = value; }
@@ -55,6 +59,7 @@ namespace Mechanizer
             _traveledDodgeDistance = 0f;
             _dodgeRollInput = _input;
             _state = PlayerMovementState.Dodge_Roll;
+            _dodgeRollFeedback.CreateFeedback(gameObject);
         }
 
         private void UpdateFlipTransform()
@@ -164,6 +169,11 @@ namespace Mechanizer
             Idle = 0,
             Run = 1,
             Dodge_Roll = 2,
+        }
+
+        private void PlayFootstep()
+        {
+            _footstepFeedback.CreateFeedback(gameObject);
         }
     }
 }
