@@ -36,7 +36,7 @@ namespace Mechanizer
             {
                 var w = weighteds[i];
                 weight += w.GetWeight();
-                if (rand >= weight)
+                if (rand <= weight)
                 {
                     return (T)w;
                 }

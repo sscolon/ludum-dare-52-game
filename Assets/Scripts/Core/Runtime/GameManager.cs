@@ -35,7 +35,6 @@ namespace Mechanizer
             _waveManager.OnWaveComplete -= NextWaveRoutine;
         }
 
-
         public void NewGame()
         {
             _rand = new Rand(_seed);

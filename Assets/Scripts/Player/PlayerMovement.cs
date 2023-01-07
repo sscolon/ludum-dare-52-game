@@ -10,8 +10,11 @@ namespace Mechanizer
         private Vector2 _dodgeRollInput;
         private Vector2 _targetSpeed;
         private float _traveledDodgeDistance;
+        private StateAnimator _animator;
         [Header("Components")]
         [SerializeField] private Rigidbody2D _playerBody;
+        [SerializeField] private Transform _flipTransform;
+        [SerializeField] private Transform _rotatorTransform;
 
         [Header("Stats")]
         [SerializeField] private float _acceleration = 12f;
@@ -19,6 +22,7 @@ namespace Mechanizer
         [SerializeField] private float _movementSpeed = 8f;
         [SerializeField] private float _dodgeRollSpeed;
         [SerializeField] private float _dodgeRollDistance;
+        [SerializeField] private float _flipSpeed;
         public float Acceleration { get => _acceleration; set => _acceleration = value; }
         public float Deceleration { get => _deceleration; set => _deceleration = value; }
         public float MovementSpeed { get => _movementSpeed; set => _movementSpeed = value; }
@@ -28,6 +32,11 @@ namespace Mechanizer
         {
             if (_playerBody == null)
                 _playerBody = GetComponent<Rigidbody2D>();
+        }
+
+        private void Start()
+        {
+            _animator = new StateAnimator(GetComponent<Animator>());
         }
 
         private void EnterIdle()
@@ -48,13 +57,36 @@ namespace Mechanizer
             _state = PlayerMovementState.Dodge_Roll;
         }
 
+        private void UpdateFlipTransform()
+        {
+            Vector3 mousePosition = Input.mousePosition;
+            Vector3 worldMousePosition = Helpers.MainCamera.ScreenToWorldPoint(mousePosition);
+            worldMousePosition.z = 0.0f;
+
+            if (worldMousePosition.x < transform.position.x)
+            {
+                Vector3 targetScale = new Vector3(-1f, 1f, 1f);
+                _flipTransform.localScale = Vector3.Lerp(_flipTransform.localScale, targetScale, _flipSpeed * Time.deltaTime);
+            }
+            else
+            {
+                Vector3 targetScale = new Vector3(1f, 1f, 1f);
+                _flipTransform.localScale = Vector3.Lerp(_flipTransform.localScale, targetScale, _flipSpeed * Time.deltaTime);
+            }
+        }
+
         private void Update()
         {
             _input.x = Input.GetAxisRaw("Horizontal");
             _input.y = Input.GetAxisRaw("Vertical");
+            _input = _input.normalized;
+
+
             switch (_state)
             {
                 case PlayerMovementState.Idle:
+                    UpdateFlipTransform();
+                    _animator.Play("idle");
                     _targetSpeed = Vector2.zero;
                     if (_input.x != 0f || _input.y != 0f)
                     {
@@ -63,6 +95,8 @@ namespace Mechanizer
 
                     break;
                 case PlayerMovementState.Run:
+                    UpdateFlipTransform();
+                    _animator.Play("run");
                     _targetSpeed = _input * MovementSpeed;
                     if (_input.x == 0f && _input.y == 0f)
                     {
@@ -76,13 +110,25 @@ namespace Mechanizer
 
                     break;
                 case PlayerMovementState.Dodge_Roll:
+
+                    _animator.Play("dodge");
                     _targetSpeed = _dodgeRollInput * DodgeRollSpeed;
 
                     float distance = Vector3.Distance(transform.position, _lastDodgePosition);
                     _traveledDodgeDistance += distance;
+
+                    Vector3 mousePosition = Input.mousePosition;
+                    Vector3 worldMousePosition = Helpers.MainCamera.ScreenToWorldPoint(mousePosition);
+                    worldMousePosition.z = 0.0f;
+                    float z = (_traveledDodgeDistance / _dodgeRollDistance) * -360f;
+                    if (worldMousePosition.x < transform.position.x)
+                        z *= -1f;
+
+                    _rotatorTransform.localRotation = Quaternion.Euler(0, 0, z);
                     if(_traveledDodgeDistance >= DodgeRollDistance)
                     {
-                        EnterRun();
+                        _rotatorTransform.localRotation = Quaternion.identity;
+                          EnterRun();
                     }
                     _lastDodgePosition = transform.position;
                     break;

@@ -18,6 +18,7 @@ namespace Mechanizer
         {
             _waveIndex++;
             _currentWave = _waveData.NextWave(rand);
+            Debug.Log(_currentWave);
             _requiredKills = _currentWave.GetEnemyCount();
 
             for (int i = 0; i < _currentWave.spawns.Count; i++)
