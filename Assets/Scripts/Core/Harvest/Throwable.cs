@@ -6,6 +6,7 @@ namespace Mechanizer
     {
         private Vector2 _targetSpeed;
         private ThrowableState _state;
+        private PlayerHarvester _harvester;
         [Header("Throwable Settings")]
         [SerializeField] private Rigidbody2D _throwableBody;
         [SerializeField] private float _movementSpeed;
@@ -58,6 +59,7 @@ namespace Mechanizer
 
         public void OnHarvestInit(PlayerHarvester context)
         {
+            _harvester = context;
             transform.SetParent(context.CraftTransform);
             transform.localScale = Vector3.one;
             _state = ThrowableState.Held;
@@ -79,6 +81,7 @@ namespace Mechanizer
             transform.SetParent(null);
             _targetSpeed = direction * MovementSpeed;
             _state = ThrowableState.Thrown;
+            _harvester.ClearComponents();
         }
 
         private enum ThrowableState

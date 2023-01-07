@@ -30,7 +30,7 @@ namespace Mechanizer
                 harvested.OnHarvestInit(this);
             }
 
-            ClearComponents();
+          //  ClearComponents();
         }
 
         private void AddComponent(string tag)
@@ -52,7 +52,7 @@ namespace Mechanizer
             return GetFreeComponent() != -1;
         }
 
-        private void ClearComponents()
+        public void ClearComponents()
         {
             for (int i = 0; i < _components.Length; i++)
             {
