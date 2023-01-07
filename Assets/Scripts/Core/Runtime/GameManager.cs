@@ -33,6 +33,12 @@ namespace Mechanizer
             _waveManager.OnWaveComplete -= NextWaveRoutine;
         }
 
+        private void Start()
+        {
+            //THIS IS TEMPORARY, JUST FOR TESTING PURPOSES>
+            NewGame();
+        }
+
         public void NewGame()
         {
             _rand = new Rand(_seed);
