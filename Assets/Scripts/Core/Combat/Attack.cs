@@ -26,14 +26,19 @@ namespace Mechanizer
             for (int i = 0; i < _results.Count; i++)
             {
                 var result = _results[i];
-                if (result.TryGetComponent(out IDamageable damageable))
-                {
-                    OnDamageStart?.Invoke(result, damageable);
-                    damageable.Health.Value -= _damage.Value;
-                    OnDamageFinish?.Invoke(result, damageable);
-                }
+                DoDamage(result);
             }
             OnPerformFinish?.Invoke();
+        }
+
+        public void DoDamage(Collider2D collider)
+        {
+            if (collider.TryGetComponent(out IDamageable damageable))
+            {
+                OnDamageStart?.Invoke(collider, damageable);
+                damageable.Health.Value -= _damage.Value;
+                OnDamageFinish?.Invoke(collider, damageable);
+            }
         }
     }
 }
