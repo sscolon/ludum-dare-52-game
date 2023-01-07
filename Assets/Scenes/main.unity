@@ -295,12 +295,16 @@ PrefabInstance:
       value: main_camera
       objectReference: {fileID: 0}
     - target: {fileID: 4867865054942008378, guid: 80305cc440567ca4099e0e8ea5a435a0, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867865054942008378, guid: 80305cc440567ca4099e0e8ea5a435a0, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0
+      value: 0.002415459
       objectReference: {fileID: 0}
     - target: {fileID: 4867865054942008378, guid: 80305cc440567ca4099e0e8ea5a435a0, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 1
+      value: 0.99516904
       objectReference: {fileID: 0}
     - target: {fileID: 4867865054942008379, guid: 80305cc440567ca4099e0e8ea5a435a0, type: 3}
       propertyPath: m_RootOrder
