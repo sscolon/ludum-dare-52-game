@@ -282,21 +282,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2337339450003341128, guid: 80305cc440567ca4099e0e8ea5a435a0, type: 3}
-      propertyPath: m_RefResolutionX
-      value: 352
-      objectReference: {fileID: 0}
-    - target: {fileID: 2337339450003341128, guid: 80305cc440567ca4099e0e8ea5a435a0, type: 3}
-      propertyPath: m_RefResolutionY
-      value: 198
-      objectReference: {fileID: 0}
     - target: {fileID: 4867865054942008372, guid: 80305cc440567ca4099e0e8ea5a435a0, type: 3}
       propertyPath: m_Name
       value: main_camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867865054942008378, guid: 80305cc440567ca4099e0e8ea5a435a0, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 4867865054942008378, guid: 80305cc440567ca4099e0e8ea5a435a0, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
