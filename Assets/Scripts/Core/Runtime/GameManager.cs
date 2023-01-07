@@ -8,16 +8,16 @@ namespace Mechanizer
         private Rand _rand;
         [SerializeField] private int _seed;
         [SerializeField] private WaveManager _waveManager;
-        private static GameManager _gameManager;
         public int Score { get => _score; set => _score = value; }
+        public static GameManager Main { get; private set; }
         private void Awake()
         {
-            if (_gameManager == null)
+            if (Main == null)
             {
-                _gameManager = this;
+                Main = this;
                 DontDestroyOnLoad(this);
             }
-            else if (_gameManager != this)
+            else if (Main != this)
             {
                 Destroy(this.gameObject);
             }
