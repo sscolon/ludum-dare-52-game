@@ -4,6 +4,7 @@ namespace Mechanizer
 {
     public static class Helpers
     {
+        private static CameraFollow _mainCameraFollow;
         private static Camera _camera;
         public static Camera MainCamera
         {
@@ -12,6 +13,16 @@ namespace Mechanizer
                 if (_camera == null)
                     _camera = Camera.main;
                 return _camera;
+            }
+        }
+
+        public static CameraFollow MainCameraFollow
+        {
+            get
+            {
+                if (_mainCameraFollow == null)
+                    _mainCameraFollow = MainCamera.GetComponent<CameraFollow>();
+                return _mainCameraFollow;
             }
         }
 
