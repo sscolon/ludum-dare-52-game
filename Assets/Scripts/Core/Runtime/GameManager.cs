@@ -22,6 +22,7 @@ namespace Mechanizer
             {
                 Destroy(this.gameObject);
             }
+            NewGame();
         }
 
         private void OnEnable()
@@ -34,11 +35,6 @@ namespace Mechanizer
             _waveManager.OnWaveComplete -= NextWaveRoutine;
         }
 
-        private void Start()
-        {
-            //THIS IS TEMPORARY, JUST FOR TESTING PURPOSES>
-            NewGame();
-        }
 
         public void NewGame()
         {
