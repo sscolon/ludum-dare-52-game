@@ -28,5 +28,10 @@ namespace Mechanizer
                 Destroy(gameObject);
             }
         }
+
+        public PartyTag GetParty()
+        {
+            return PartyTag.Enemy;
+        }
     }
 }

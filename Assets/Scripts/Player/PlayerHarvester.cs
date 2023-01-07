@@ -23,6 +23,7 @@ namespace Mechanizer
 
             Recipe recipe = _recipeData.FindBestRecipe(_components);
             GameObject prefab = recipe.Prefab;
+            Debug.Log(prefab);
             GameObject instance = Instantiate(prefab, _craftTransform.position, prefab.transform.rotation);
             if (instance.TryGetComponent(out IHarvested harvested))
             {

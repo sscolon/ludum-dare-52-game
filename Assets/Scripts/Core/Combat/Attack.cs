@@ -8,7 +8,10 @@ namespace Mechanizer
     {
         private List<Collider2D> _results;
         [SerializeField] private Damage _damage;
+        [SerializeField] private PartyTag _partyTag;
         [SerializeField] private Hitbox _hitbox;
+
+        public PartyTag PartyTag { get => _partyTag; set => _partyTag = value; }
         public Damage Damage { get => _damage; set => _damage = value; }
         public Hitbox Hitbox { get => _hitbox; set => _hitbox = value; }
 
@@ -35,6 +38,8 @@ namespace Mechanizer
         {
             if (collider.TryGetComponent(out IDamageable damageable))
             {
+                if (damageable.GetParty() == PartyTag)
+                    return false;
                 OnDamageStart?.Invoke(collider, damageable);
                 damageable.Health.Value -= _damage.Value;
                 OnDamageFinish?.Invoke(collider, damageable);

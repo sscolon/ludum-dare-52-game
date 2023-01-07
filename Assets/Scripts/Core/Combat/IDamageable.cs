@@ -3,5 +3,6 @@
     public interface IDamageable
     {
         public Health Health { get; }
+        public PartyTag GetParty();
     }
 }

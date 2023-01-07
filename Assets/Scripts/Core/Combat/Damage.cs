@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Mechanizer
 {
-    [SerializeField]
+    [Serializable]
     public class Damage
     {
         [SerializeField] private float _value;

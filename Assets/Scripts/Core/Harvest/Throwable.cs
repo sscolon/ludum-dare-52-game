@@ -2,16 +2,14 @@
 
 namespace Mechanizer
 {
-    public class Throwable : MonoBehaviour, IHarvested
+    public class Throwable : Attack, IHarvested
     {
         private Vector2 _targetSpeed;
         private ThrowableState _state;
+        [Header("Throwable Settings")]
         [SerializeField] private Rigidbody2D _throwableBody;
-        [SerializeField] private float _acceleration;
-        [SerializeField] private float _deceleration;
         [SerializeField] private float _movementSpeed;
-        public float Acceleration { get => _acceleration; set => _acceleration = value; }
-        public float Deceleration { get => _deceleration; set => _deceleration = value; }
+        [SerializeField] private bool _destroyAfterDamage = true;
         public float MovementSpeed { get => _movementSpeed; set => _movementSpeed = value; }
         private void OnValidate()
         {
@@ -37,19 +35,25 @@ namespace Mechanizer
             switch (_state)
             {
                 case ThrowableState.Thrown:
-                    //Same code as player movement.
-                    //Just make sure to really tune up the acceleration so it doesn't have a slow start.
-                    //We're doing it this way incase we want to make certain changes later.
-                    Vector2 diff = _targetSpeed - _throwableBody.velocity;
-                    float accelX = (Mathf.Abs(_targetSpeed.x) > 0.01f) ? Acceleration : Deceleration;
-                    float accelY = (Mathf.Abs(_targetSpeed.y) > 0.01f) ? Acceleration : Deceleration;
-
-                    Vector2 movement = Vector2.zero;
-                    movement.x = Mathf.Abs(diff.x) * accelX * Mathf.Sign(diff.x) * Acceleration;
-                    movement.y = Mathf.Abs(diff.y) * accelY * Mathf.Sign(diff.y) * Acceleration;
-                    _throwableBody.velocity = movement;
+                    _throwableBody.velocity = _targetSpeed; 
                     break;
             }
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            switch (_state)
+            {
+                case ThrowableState.Thrown:
+                    if (DoDamage(collision) || collision.gameObject.CompareTag("World"))
+                    {
+                        if (_destroyAfterDamage)
+                        {
+                            Destroy(gameObject);
+                        }
+                    }
+        
+                break;
+            } 
         }
 
         public void OnHarvestInit(PlayerHarvester context)
@@ -72,7 +76,9 @@ namespace Mechanizer
 
         private void ThrowInDirection(Vector2 direction)
         {
+            transform.SetParent(null);
             _targetSpeed = direction * MovementSpeed;
+            _state = ThrowableState.Thrown;
         }
 
         private enum ThrowableState
