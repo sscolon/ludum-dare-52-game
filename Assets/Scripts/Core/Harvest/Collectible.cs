@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Mechanizer
 {
-    public class Collectible : MonoBehaviour
+    public class Collectible : MonoBehaviour, IWeighted
     {
         private bool _isCollected;
         [Header("Components")]
@@ -16,6 +16,7 @@ namespace Mechanizer
         [SerializeField] private string _collectibleTag;
         [SerializeField] private float _spawnSpeed = 3f;
         [SerializeField] private float _collectSpeed = 3f;
+        [SerializeField] private int _weight;
         public Sprite Icon { get => _icon; set => _icon = value; }
         public string CollectibleTag { get => _collectibleTag; set => _collectibleTag = value; }
         public bool IsCollected { get => _isCollected; set => _isCollected = value; }
@@ -75,6 +76,11 @@ namespace Mechanizer
             }
 
             Destroy(gameObject);
+        }
+
+        public int GetWeight()
+        {
+            return _weight;
         }
     }
 }

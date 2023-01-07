@@ -8,6 +8,7 @@ namespace Mechanizer
         private Rand _rand;
         [SerializeField] private int _seed;
         [SerializeField] private WaveManager _waveManager;
+        public int Seed { get => _seed; }
         public int Score { get => _score; set => _score = value; }
         public static GameManager Main { get; private set; }
         private void Awake()
