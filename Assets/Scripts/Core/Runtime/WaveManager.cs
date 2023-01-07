@@ -29,7 +29,7 @@ namespace Mechanizer
                 GameObject instance = GameObject.Instantiate(spawn.prefab, position, spawn.prefab.transform.rotation);
                 if (instance.TryGetComponent(out Enemy enemy))
                 {
-                    enemy.OnDeath += DecrementEnemyKill;
+                    enemy.Health.OnDeath += DecrementEnemyKill;
                     void DecrementEnemyKill()
                     {
                         _requiredKills--;
@@ -37,7 +37,7 @@ namespace Mechanizer
                         {
                             OnWaveComplete?.Invoke();
                         }
-                        enemy.OnDeath -= DecrementEnemyKill;
+                        enemy.Health.OnDeath -= DecrementEnemyKill;
                     }
                 }
             }

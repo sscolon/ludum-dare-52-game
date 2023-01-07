@@ -41,7 +41,7 @@ namespace Mechanizer
                 if (damageable.GetParty() == PartyTag)
                     return false;
                 OnDamageStart?.Invoke(collider, damageable);
-                damageable.Health.Value -= _damage.Value;
+                damageable.Health.TakeDamage(_damage);
                 OnDamageFinish?.Invoke(collider, damageable);
                 return true;
             }

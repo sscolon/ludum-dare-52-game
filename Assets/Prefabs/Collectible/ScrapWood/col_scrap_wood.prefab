@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6038996817406397127}
   - component: {fileID: 8928221325373797646}
   - component: {fileID: 9173037071365703458}
+  - component: {fileID: 4121500400723720896}
   m_Layer: 0
   m_Name: col_scrap_wood
   m_TagString: Untagged
@@ -93,9 +94,22 @@ MonoBehaviour:
   _spawnSpeed: 3
   _collectSpeed: 6
   _weight: 2
+--- !u!114 &4121500400723720896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145997066317997720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225b481a2a054694faa0b61af323b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _spawnFeedback:
     useRandomSound: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 215cedbe08d01ed48be8c34d0aade7e8, type: 3}
     useRandomSpawn: 0
     spawns: []
     useScreenshake: 0

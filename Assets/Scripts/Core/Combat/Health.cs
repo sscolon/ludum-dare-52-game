@@ -38,5 +38,16 @@ namespace Mechanizer
 
         public event Action<float> OnValueChange;
         public event Action<float> OnMaxValueChange;
+        public event Action<float> OnDamaged;
+        public event Action OnDeath;
+        public void TakeDamage(Damage damage)
+        {
+            Value -= damage.Value;
+            OnDamaged?.Invoke(damage.Value);
+            if(Value <= 0)
+            {
+                OnDeath?.Invoke();
+            }
+        }
     }
 }

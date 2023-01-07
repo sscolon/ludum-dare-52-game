@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Mechanizer
@@ -18,13 +19,12 @@ namespace Mechanizer
         [SerializeField] private float _collectSpeed = 3f;
         [SerializeField] private int _weight;
 
-        [Header("Feedback")]
-        [SerializeField] private Feedback _spawnFeedback;
-        [SerializeField] private Feedback _collectFeedback;
         public Sprite Icon { get => _icon; set => _icon = value; }
         public string CollectibleTag { get => _collectibleTag; set => _collectibleTag = value; }
         public bool IsCollected { get => _isCollected; set => _isCollected = value; }
 
+        public event Action OnSpawn;
+        public event Action OnCollect;
         private void Start()
         {
             StartCoroutine(SpawnRoutine());
@@ -37,7 +37,7 @@ namespace Mechanizer
 
         private IEnumerator SpawnRoutine()
         {
-            _spawnFeedback.CreateFeedback(gameObject);
+            OnSpawn?.Invoke();
             _spriteRenderer.transform.localScale = Vector3.zero;
             _spriteRenderer.material = _spriteDefaultMaterial;
 
@@ -69,7 +69,7 @@ namespace Mechanizer
 
         private IEnumerator CollectRoutine()
         {
-            _collectFeedback.CreateFeedback(gameObject);
+            OnCollect?.Invoke();
             _spriteRenderer.material = _spriteWhiteMaterial;
             Vector3 targetSize = new Vector3(3f, 0f, 0f);
             float time = 0f;

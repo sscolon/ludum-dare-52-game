@@ -7,26 +7,19 @@ namespace Mechanizer
     {
         [SerializeField] private Health _health;
         public Health Health { get => _health; }
-
-        public event Action OnDeath;
         private void OnEnable()
         {
-            Health.OnValueChange += Die;
+            Health.OnDeath += Die;
         }
 
         private void OnDisable()
         {
-            Health.OnValueChange -= Die;
+            Health.OnDeath -= Die;
         }
 
-        private void Die(float healthValue)
+        private void Die()
         {
-            if (healthValue <= 0f)
-            {
-                //Do death thing here.
-                OnDeath?.Invoke();
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
 
         public PartyTag GetParty()

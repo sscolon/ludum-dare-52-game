@@ -1,4 +1,6 @@
-﻿namespace Mechanizer
+﻿using System;
+
+namespace Mechanizer
 {
     public interface IDamageable
     {

@@ -20,9 +20,10 @@ namespace Mechanizer
 
         private void UpdateShake()
         {
-            if (_shakeDuration <= 0)
+            if (_shakeTime <= 0)
                 return;
             _shakeTime -= Time.deltaTime;
+            _shakeTime = Mathf.Clamp(_shakeTime, 0, _shakeDuration);
             float max = _shakeStrength * (_shakeTime / _shakeDuration);
             float x = Random.Range(-max, max);
             float y = Random.Range(-max, max);

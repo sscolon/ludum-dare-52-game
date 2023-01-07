@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Mechanizer
 {
@@ -9,17 +10,27 @@ namespace Mechanizer
         private PlayerHarvester _harvester;
         private float _height;
         private float _gravity;
-        [Header("Throwable Settings")]
+
+        [Header("Throwable Components")]
         [SerializeField] private Rigidbody2D _throwableBody;
         [SerializeField] private Transform _rotatorTransform;
         [SerializeField] private Transform _heightTransform;
+        [SerializeField] private bool _destroyAfterDamage = true;
+
+        [Header("Movement")]
         [SerializeField] private float _movementSpeed;
         [SerializeField] private float _rotationSpeed = 20f;
+
+        [Header("Gravity")]
         [SerializeField] private float _throwHeight;
         [SerializeField] private float _throwHeightOffset;
         [SerializeField] private float _fallSpeed;
-        [SerializeField] private bool _destroyAfterDamage = true;
+
         public float MovementSpeed { get => _movementSpeed; set => _movementSpeed = value; }
+
+        public event Action OnHarvest;
+        public event Action OnThrow;
+        public event Action OnDeath;
         private void OnValidate()
         {
             if (_throwableBody == null)
@@ -44,7 +55,7 @@ namespace Mechanizer
                     _heightTransform.transform.localPosition = new Vector3(0, _height + _throwHeightOffset, 0);
                     if (_height <= 0f)
                     {
-                        Destroy(gameObject);
+                        Kill();
                     }
                     break;
             }
@@ -69,7 +80,7 @@ namespace Mechanizer
                     {
                         if (_destroyAfterDamage)
                         {
-                            Destroy(gameObject);
+                            Kill();
                         }
                     }
         
@@ -83,6 +94,7 @@ namespace Mechanizer
             transform.SetParent(context.CraftTransform);
             transform.localScale = Vector3.one;
             _state = ThrowableState.Held;
+            OnHarvest?.Invoke();
         }
 
         private void ThrowToMouse()
@@ -104,6 +116,13 @@ namespace Mechanizer
             _height = _throwHeight;
             _gravity = 0f;
             _harvester.ClearComponents();
+            OnThrow?.Invoke();
+        }
+
+        private void Kill()
+        {
+            OnDeath?.Invoke();
+            Destroy(gameObject);
         }
 
         private enum ThrowableState

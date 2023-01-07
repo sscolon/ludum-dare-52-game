@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 1732994471837359863}
   - component: {fileID: 3469301320720392510}
   - component: {fileID: 3787292316483703570}
+  - component: {fileID: 638108657454745974}
   m_Layer: 0
   m_Name: col_scrap_plastic
   m_TagString: Untagged
@@ -275,9 +276,22 @@ MonoBehaviour:
   _spawnSpeed: 3
   _collectSpeed: 6
   _weight: 2
+--- !u!114 &638108657454745974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4910437160796811944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225b481a2a054694faa0b61af323b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _spawnFeedback:
     useRandomSound: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 215cedbe08d01ed48be8c34d0aade7e8, type: 3}
     useRandomSpawn: 0
     spawns: []
     useScreenshake: 0

@@ -8,21 +8,17 @@ namespace Mechanizer
         public Health Health { get => _health; }
         private void OnEnable()
         {
-            Health.OnValueChange += Die;
+            Health.OnDeath += Die;
         }
 
         private void OnDisable()
         {
-            Health.OnValueChange -= Die;
+            Health.OnDeath -= Die;
         }
 
-        private void Die(float healthValue)
+        private void Die()
         {
-            if (healthValue <= 0f)
-            {
-                //Do death thing here.
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
 
         public PartyTag GetParty()
