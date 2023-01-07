@@ -31,14 +31,16 @@ namespace Mechanizer
             OnPerformFinish?.Invoke();
         }
 
-        public void DoDamage(Collider2D collider)
+        public bool DoDamage(Collider2D collider)
         {
             if (collider.TryGetComponent(out IDamageable damageable))
             {
                 OnDamageStart?.Invoke(collider, damageable);
                 damageable.Health.Value -= _damage.Value;
                 OnDamageFinish?.Invoke(collider, damageable);
+                return true;
             }
+            return false;
         }
     }
 }
