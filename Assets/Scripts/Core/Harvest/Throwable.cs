@@ -7,9 +7,17 @@ namespace Mechanizer
         private Vector2 _targetSpeed;
         private ThrowableState _state;
         private PlayerHarvester _harvester;
+        private float _height;
+        private float _gravity;
         [Header("Throwable Settings")]
         [SerializeField] private Rigidbody2D _throwableBody;
+        [SerializeField] private Transform _rotatorTransform;
+        [SerializeField] private Transform _heightTransform;
         [SerializeField] private float _movementSpeed;
+        [SerializeField] private float _rotationSpeed = 20f;
+        [SerializeField] private float _throwHeight;
+        [SerializeField] private float _throwHeightOffset;
+        [SerializeField] private float _fallSpeed;
         [SerializeField] private bool _destroyAfterDamage = true;
         public float MovementSpeed { get => _movementSpeed; set => _movementSpeed = value; }
         private void OnValidate()
@@ -28,6 +36,17 @@ namespace Mechanizer
                         ThrowToMouse();
                     }
                     break;
+                case ThrowableState.Thrown:
+                    _height -= Time.deltaTime * _gravity;
+                    _gravity += _fallSpeed * Time.deltaTime;
+
+                    _rotatorTransform.Rotate(new Vector3(0, 0, _rotationSpeed * Time.deltaTime));
+                    _heightTransform.transform.localPosition = new Vector3(0, _height + _throwHeightOffset, 0);
+                    if (_height <= 0f)
+                    {
+                        Destroy(gameObject);
+                    }
+                    break;
             }
         }
 
@@ -40,6 +59,7 @@ namespace Mechanizer
                     break;
             }
         }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             switch (_state)
@@ -81,6 +101,8 @@ namespace Mechanizer
             transform.SetParent(null);
             _targetSpeed = direction * MovementSpeed;
             _state = ThrowableState.Thrown;
+            _height = _throwHeight;
+            _gravity = 0f;
             _harvester.ClearComponents();
         }
 
