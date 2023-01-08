@@ -8,6 +8,7 @@ namespace Mechanizer
         private Rand _rand;
         [SerializeField] private int _seed;
         [SerializeField] private WaveManager _waveManager;
+        [SerializeField] private PlayerManager _playerManager;
         public int Seed { get => _seed; }
         public int Score { get => _score; set => _score = value; }
         public static GameManager Main { get; private set; }
@@ -38,6 +39,10 @@ namespace Mechanizer
         public void NewGame()
         {
             _rand = new Rand(_seed);
+            
+            var player = _playerManager.NewPlayer();
+            player.transform.position = Vector3.zero;
+
             //Incase we want to override seed.
             Debug.Log($"Seed: {_rand.Seed}");
             NextWaveRoutine();
