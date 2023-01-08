@@ -164,6 +164,18 @@ namespace Mechanizer
             }
         }
 
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            switch (_state)
+            {
+                //We need to put this here so that players don't get softlocked by dashing into a wall.
+                case PlayerMovementState.Dodge_Roll:
+                    EnterRun();
+                    break;
+            }
+        }
+
+
         private enum PlayerMovementState
         {
             Idle = 0,
