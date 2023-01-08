@@ -240,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _radius: 3
   _min: 3
-  _max: 6
+  _max: 5
   _collectibleData: {fileID: 11400000, guid: c931ea3c51097ee4a8cb6e467a801ff2, type: 2}
 --- !u!95 &6146948296481410209
 Animator:
