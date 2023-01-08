@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Mechanizer
 {
@@ -10,14 +11,26 @@ namespace Mechanizer
         [SerializeField] private WaveManager _waveManager;
         [SerializeField] private PlayerManager _playerManager;
         public int Seed { get => _seed; }
-        public int Score { get => _score; set => _score = value; }
+        public int Score
+        {
+            get
+            {
+                return _score;
+            }
+            set
+            {
+                _score = value;
+                OnScoreChanged?.Invoke(_score);
+            }
+        }
+
+        public event Action<int> OnScoreChanged;
         public static GameManager Main { get; private set; }
         private void Awake()
         {
             if (Main == null)
             {
                 Main = this;
-                DontDestroyOnLoad(this);
             }
             else if (Main != this)
             {

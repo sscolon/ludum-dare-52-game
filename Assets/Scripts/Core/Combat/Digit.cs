@@ -6,6 +6,11 @@ namespace Mechanizer
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Sprite[] _digits;
+        public Color Color
+        {
+            set => _spriteRenderer.color = value;
+        }
+
         public void SetDigit(int digit)
         {
             if (digit < 0 || digit > 9)
