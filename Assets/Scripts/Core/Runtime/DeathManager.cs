@@ -68,5 +68,10 @@ namespace Mechanizer
         {
             GameSceneManager.Main.LoadScene("main");
         }
+
+        public void MainMenu()
+        {
+            GameSceneManager.Main.LoadScene("menu");
+        }
     }
 }
