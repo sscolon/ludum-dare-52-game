@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class WaveEditor : EditorWindow
@@ -44,6 +46,39 @@ public class WaveEditor : EditorWindow
         if(Selection.activeGameObject != null)
         {
             if(Selection.activeGameObject.TryGetComponent(out Wave wave))
+            {
+                _target = wave;
+            }
+        }
+    }
+
+    private void NewWave()
+    {
+        GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Waves/wave_base.prefab");
+        var scene = EditorSceneManager.GetActiveScene();
+        GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, scene);
+        PrefabUtility.UnpackPrefabInstance(instance, PrefabUnpackMode.OutermostRoot, InteractionMode.AutomatedAction);
+
+        string localPath = "Assets/Waves/wave.prefab";
+        localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
+        bool prefabSuccess;
+        PrefabUtility.SaveAsPrefabAssetAndConnect(instance, localPath, InteractionMode.UserAction, out prefabSuccess);
+        DestroyImmediate(instance);
+
+        var asset = AssetDatabase.LoadAssetAtPath<GameObject>(localPath);
+        WaveData waveData = (WaveData)AssetDatabase.LoadAssetAtPath("Assets/Waves/wave_data.asset", typeof(WaveData));
+        WaveContainer waveContainer = asset.GetComponentInChildren<WaveContainer>();
+        waveData.AddWaveContainer(waveContainer);
+        EditorUtility.SetDirty(waveContainer);
+        AssetDatabase.OpenAsset(asset);
+        AssetDatabase.SaveAssets();
+        scene = EditorSceneManager.GetActiveScene();
+        var gameObjects = scene.GetRootGameObjects();
+        for(int i = 0; i < gameObjects.Length; i++)
+        {
+            var gameObject = gameObjects[i];
+            Wave wave = gameObject.GetComponentInChildren<Wave>();
+            if(wave != null)
             {
                 _target = wave;
             }
@@ -203,5 +238,9 @@ public class WaveEditor : EditorWindow
 
         GetTarget();
         DrawPalleteGUI();
+        if(GUILayout.Button("New Wave"))
+        {
+            NewWave();
+        }
     }
 }

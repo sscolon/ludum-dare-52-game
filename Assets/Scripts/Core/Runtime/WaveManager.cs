@@ -16,6 +16,12 @@ namespace Mechanizer
         public int Difficulty { get; private set; } = 0;
 
         public event Action OnWaveComplete;
+
+        private void Awake()
+        {
+            _waveData.Init();
+        }
+
         public void NextWave(Rand rand)
         {
             _waveIndex++;

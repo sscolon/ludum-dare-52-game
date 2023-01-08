@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a26a4a436b720b647852889965d36506
+guid: 87fc0a62c7c75b94cbc73e6ebe3e22d8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tex_mon_probe_attack_0
+      name: tex_mon_probe_hard_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 054269b166bb33a4884af18285f276a1
-      internalID: 1489169574
+      spriteID: fbd94c4c6457a714086dba9811fc4170
+      internalID: 1213994924
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tex_mon_probe_attack_1
+      name: tex_mon_probe_hard_attack_1
       rect:
         serializedVersion: 2
         x: 32
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2fafbd4fd60a6f4c9450c5a0c1be8ba
-      internalID: 719776917
+      spriteID: 1acb4cb0ed5bdf8409704e03399dbf4f
+      internalID: -421966840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tex_mon_probe_attack_2
+      name: tex_mon_probe_hard_attack_2
       rect:
         serializedVersion: 2
         x: 64
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4d629e3d1dd9e548994e9a64e2fc8b0
-      internalID: -995312715
+      spriteID: 1671f544c2d69e7499909247a23b683e
+      internalID: -2079644562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tex_mon_probe_attack_3
+      name: tex_mon_probe_hard_attack_3
       rect:
         serializedVersion: 2
         x: 96
@@ -194,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bd0882d094aa904ea67599986ad78c7
-      internalID: 211790613
+      spriteID: 1ddf03e928569d24fa5c01d30d950a56
+      internalID: 315749852
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tex_mon_probe_attack_4
+      name: tex_mon_probe_hard_attack_4
       rect:
         serializedVersion: 2
         x: 128
@@ -215,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f2e4e7633f1baf428b8f1cdd68be166
-      internalID: -820809451
+      spriteID: 4fd308351c3da6b48a0842b3c111ef6c
+      internalID: 607401257
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tex_mon_probe_attack_5
+      name: tex_mon_probe_hard_attack_5
       rect:
         serializedVersion: 2
         x: 160
@@ -236,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10a5c332afc61b444bec70206cfefac4
-      internalID: -2053935755
+      spriteID: 0f49a386faa7ed1408ae798408b623d2
+      internalID: -827185929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tex_mon_probe_attack_6
+      name: tex_mon_probe_hard_attack_6
       rect:
         serializedVersion: 2
         x: 192
@@ -257,8 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54b1f781fa3c9374a9f9a21ef421d6cb
-      internalID: -1506181997
+      spriteID: 3b59d0b85f86bf54cb9527420837172e
+      internalID: 1856979726
       vertices: []
       indices: 
       edges: []
@@ -274,13 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tex_mon_probe_attack_2: -995312715
-      tex_mon_probe_attack_1: 719776917
-      tex_mon_probe_attack_4: -820809451
-      tex_mon_probe_attack_3: 211790613
-      tex_mon_probe_attack_6: -1506181997
-      tex_mon_probe_attack_0: 1489169574
-      tex_mon_probe_attack_5: -2053935755
+      tex_mon_probe_hard_attack_0: 1213994924
+      tex_mon_probe_hard_attack_3: 315749852
+      tex_mon_probe_hard_attack_6: 1856979726
+      tex_mon_probe_hard_attack_1: -421966840
+      tex_mon_probe_hard_attack_2: -2079644562
+      tex_mon_probe_hard_attack_5: -827185929
+      tex_mon_probe_hard_attack_4: 607401257
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

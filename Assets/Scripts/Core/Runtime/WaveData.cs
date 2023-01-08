@@ -8,14 +8,19 @@ namespace Mechanizer
     {
         private Wave[] _waves;
 
-        [SerializeField] private WaveContainer[] _waveContainers;
-        private void OnEnable()
+        [SerializeField] private List<WaveContainer> _waveContainers;
+        public void Init()
         {
-    _waves = new Wave[_waveContainers.Length];
-            for(int i = 0; i < _waveContainers.Length; i++)
+            _waves = new Wave[_waveContainers.Count];
+            for (int i = 0; i < _waveContainers.Count; i++)
             {
                 _waves[i] = _waveContainers[i].Wave;
             }
+        }
+
+        public void AddWaveContainer(WaveContainer container)
+        {
+            _waveContainers.Add(container);
         }
 
         public Wave NextWave(Rand rand, int difficulty)
