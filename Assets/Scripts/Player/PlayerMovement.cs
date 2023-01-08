@@ -45,11 +45,13 @@ namespace Mechanizer
 
         private void EnterIdle()
         {
+            _rotatorTransform.localRotation = Quaternion.identity;
             _state = PlayerMovementState.Idle;
         }
 
         private void EnterRun()
         {
+            _rotatorTransform.localRotation = Quaternion.identity;
             _state = PlayerMovementState.Run;
         }
 
@@ -132,7 +134,7 @@ namespace Mechanizer
                     _rotatorTransform.localRotation = Quaternion.Euler(0, 0, z);
                     if(_traveledDodgeDistance >= DodgeRollDistance)
                     {
-                        _rotatorTransform.localRotation = Quaternion.identity;
+        
                           EnterRun();
                     }
                     _lastDodgePosition = transform.position;
