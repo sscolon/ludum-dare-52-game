@@ -7,9 +7,9 @@ namespace Mechanizer
     public class GameNumberUI : MonoBehaviour
     {
         private string _text;
-        private List<Digit> _digits;
+        private List<DigitUI> _digits;
         [SerializeField] private RectTransform _digitParent;
-        [SerializeField] private Digit _digitPrefab;
+        [SerializeField] private DigitUI _digitPrefab;
         [SerializeField] private float _popAnimationSpeed = 3f;
         public string Text
         {
@@ -26,7 +26,7 @@ namespace Mechanizer
 
         private void CreateUI(char[] digits)
         {
-            _digits = new List<Digit>();
+            _digits = new List<DigitUI>();
             for (int i = 0; i < digits.Length; i++)
             {
                 var digitInstance = Instantiate(_digitPrefab, _digitParent, false);
@@ -41,7 +41,7 @@ namespace Mechanizer
                 int diff = digits.Length - _digits.Count;
                 for (int i = 0; i < diff; i++)
                 {
-                    Digit digitInstance = Instantiate(_digitPrefab, _digitParent, false);
+                    DigitUI digitInstance = Instantiate(_digitPrefab, _digitParent, false);
                     _digits.Add(digitInstance);
                 }
             }
@@ -51,7 +51,7 @@ namespace Mechanizer
                 for (int i = 0; i < diff; i++)
                 {
                     int index = _digits.Count - 1;
-                    Digit digit = _digits[index];
+                    DigitUI digit = _digits[index];
                     Destroy(digit.gameObject);
                     _digits.RemoveAt(index);
                 }
@@ -99,7 +99,7 @@ namespace Mechanizer
                     Vector3 vl1 = Vector3.Lerp(v1, v2, time);
                     Vector3 vl2 = Vector3.Lerp(v2, v3, time);
                     Vector3 vl3 = Vector3.Lerp(vl1, vl2, time);
-                    foreach (Digit digit in _digits)
+                    foreach (DigitUI digit in _digits)
                     {
                         digit.Color = cl3;
                         digit.transform.localScale = vl3;

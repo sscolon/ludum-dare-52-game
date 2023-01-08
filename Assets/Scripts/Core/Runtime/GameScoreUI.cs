@@ -10,6 +10,7 @@ namespace Mechanizer
         private void Start()
         {
             _gameManager.OnScoreChanged += UpdateUI;
+            UpdateUI(_gameManager.Score);
         }
 
         private void OnDestroy()
