@@ -14,6 +14,9 @@ namespace Mechanizer
         [SerializeField] private Material _spriteWhiteMaterial;
 
         [Header("Collectible Stats")]
+        [SerializeField] private AudioClip _spawnStartSound;
+        [SerializeField] private AudioClip _spawnFinishSound;
+
         [SerializeField] private Sprite _icon;
         [SerializeField] private int _collectibleId;
         [SerializeField] private float _spawnHeight = 32f;
@@ -38,10 +41,17 @@ namespace Mechanizer
         {
             StartCoroutine(CollectRoutine());
         }
-
+        private void PlaySound(AudioClip audioClip)
+        {
+            SoundSettings settings = SoundSettings.CreateDefaultSound(audioClip);
+            settings.useVolumeLoss = true;
+            settings.transform = transform;
+            SoundManager.PlaySound(settings);
+        }
         private IEnumerator SpawnRoutine()
         {
             OnSpawn?.Invoke();
+            PlaySound(_spawnStartSound);
             _spriteRenderer.transform.localScale = Vector3.one;
             _spriteRenderer.material = _spriteDefaultMaterial;
             float time = 0f;
@@ -52,6 +62,7 @@ namespace Mechanizer
                 _heightTransform.localPosition = new Vector3(_heightTransform.localPosition.x, height);
                 yield return null;
             }
+            PlaySound(_spawnFinishSound);
             HasSpawned = true;
         }
 

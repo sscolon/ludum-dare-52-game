@@ -17,6 +17,8 @@ namespace Mechanizer
         [SerializeField] private WaveManager _waveManager;
         [SerializeField] private PlayerManager _playerManager;
         [SerializeField] private DeathManager _deathManager;
+
+        public Rand Rand { get => _rand; }
         public int Seed { get => _seed; }
         public int Score
         {

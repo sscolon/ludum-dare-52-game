@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9129823247618013139}
   - component: {fileID: 5181783699554097955}
   - component: {fileID: 4662546904323238288}
+  - component: {fileID: 1435090749463607226}
   m_Layer: 0
   m_Name: chr_probe_projectile
   m_TagString: Untagged
@@ -92,8 +93,42 @@ MonoBehaviour:
     hitboxType: 0
     circleRadius: 0
     squareSize: {x: 0, y: 0}
+  _range: 25
   _projectileBody: {fileID: 9129823247618013139}
   _movementSpeed: 10
+--- !u!114 &1435090749463607226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165318771793612836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f130f8db85f25848baa99603e0afbc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnFeedback:
+    useRandomSound: 0
+    sounds:
+    - {fileID: 8300000, guid: 254af51fdd2c2724889d295aea1afbcb, type: 3}
+    useRandomSpawn: 0
+    spawns: []
+    useScreenshake: 0
+    screenshakeStrength: 10
+    screenshakeDuration: 0.2
+  _deathFeedback:
+    useRandomSound: 0
+    sounds: []
+    useRandomSpawn: 0
+    spawns:
+    - name: Death Blast
+      inheritSpawnRotation: 0
+      prefab: {fileID: 5541078912835238550, guid: 01204760528f5e1468dd1d82343c1055, type: 3}
+      spawn: {fileID: 8031642226585442506}
+    useScreenshake: 0
+    screenshakeStrength: 10
+    screenshakeDuration: 0.2
 --- !u!1 &7571993947445558572
 GameObject:
   m_ObjectHideFlags: 0

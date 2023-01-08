@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 1467988588909311008}
   - component: {fileID: 3071762976448035298}
   - component: {fileID: 6230591178256693111}
+  - component: {fileID: 8484541073767232597}
   m_Layer: 0
   m_Name: crf_hammer
   m_TagString: Untagged
@@ -291,8 +292,27 @@ MonoBehaviour:
       prefab: {fileID: 869997205404949008, guid: 99a36c5543405a24eb5326b48fe8dcfe, type: 3}
       spawn: {fileID: 3288008165918347882}
     useScreenshake: 1
-    screenshakeStrength: 1
+    screenshakeStrength: 2
     screenshakeDuration: 0.5
+--- !u!114 &8484541073767232597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7507564943062175612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49255d46724617548811ba55b8dd2c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trailPrefab: {fileID: 4780779109044492468, guid: 83d80590781cdc842b5b5f8f5cb82861, type: 3}
+  _spriteToMimick: {fileID: 7196373428886134794}
+  _referenceBody: {fileID: 115286722554619680}
+  _velocityThreshold: 15
+  _afterImagesPerSecond: 20
+  _afterImageFadeTime: 0.25
+  _afterImageStartingAlpha: 0.5
 --- !u!1 &7801586454162750050
 GameObject:
   m_ObjectHideFlags: 0

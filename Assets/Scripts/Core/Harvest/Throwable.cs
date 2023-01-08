@@ -136,6 +136,7 @@ namespace Mechanizer
             _height = _throwHeight;
             _gravity = 0f;
             _harvester.ClearComponents();
+            _rotatorTransform.rotation = Helpers.LookAt(_rotatorTransform.position + new Vector3(_targetDirection.x, _targetDirection.y), _rotatorTransform);
             OnThrow?.Invoke();
         }
 

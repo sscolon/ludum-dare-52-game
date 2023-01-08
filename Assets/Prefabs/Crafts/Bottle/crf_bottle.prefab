@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 4081777979028090618}
   - component: {fileID: 458008770788631352}
   - component: {fileID: 8830913457878674861}
+  - component: {fileID: 2865991822135546131}
   m_Layer: 0
   m_Name: crf_bottle
   m_TagString: Untagged
@@ -332,7 +333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _harvestFeedback:
     useRandomSound: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 108d12f8118b7fe49b141df5d06665b8, type: 3}
     useRandomSpawn: 0
     spawns: []
     useScreenshake: 0
@@ -340,7 +342,8 @@ MonoBehaviour:
     screenshakeDuration: 0.2
   _throwFeedback:
     useRandomSound: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 8e2d75a0565186d4fb74e0631f5c201e, type: 3}
     useRandomSpawn: 0
     spawns: []
     useScreenshake: 0
@@ -349,16 +352,39 @@ MonoBehaviour:
   _deathFeedback:
     useRandomSound: 0
     sounds:
-    - {fileID: 8300000, guid: 2990b483d73be654c91386313fa62fef, type: 3}
+    - {fileID: 8300000, guid: 823460204b80bd24197b51a2dbcb3f44, type: 3}
     useRandomSpawn: 0
     spawns:
-    - name: Iron Ball Fall
+    - name: Bottle Fall
       inheritSpawnRotation: 0
-      prefab: {fileID: 3308879798091069026, guid: 132a953d3e41f154dbee4f3da3ad88bd, type: 3}
+      prefab: {fileID: 3240950208627927539, guid: fcd3f9970c97c5f46a398971a5bc40a8, type: 3}
+      spawn: {fileID: 97793500046330032}
+    - name: Bottle Bits
+      inheritSpawnRotation: 0
+      prefab: {fileID: 3310624806001685959, guid: d103e300ccb5f58459cdf2d2642d26fa, type: 3}
       spawn: {fileID: 97793500046330032}
     useScreenshake: 1
     screenshakeStrength: 0.5
     screenshakeDuration: 0.5
+--- !u!114 &2865991822135546131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4956789887200826790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49255d46724617548811ba55b8dd2c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trailPrefab: {fileID: 4780779109044492468, guid: 83d80590781cdc842b5b5f8f5cb82861, type: 3}
+  _spriteToMimick: {fileID: 5702844843071273680}
+  _referenceBody: {fileID: 3270633692410740218}
+  _velocityThreshold: 15
+  _afterImagesPerSecond: 20
+  _afterImageFadeTime: 0.25
+  _afterImageStartingAlpha: 0.5
 --- !u!1 &5483422957743087026
 GameObject:
   m_ObjectHideFlags: 0

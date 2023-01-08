@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 4116085267240962815}
   - component: {fileID: 567746301882025789}
   - component: {fileID: 8878727696712321448}
+  - component: {fileID: 4797553981795789799}
   m_Layer: 0
   m_Name: crf_iron_ball
   m_TagString: Untagged
@@ -314,6 +315,7 @@ MonoBehaviour:
   _destroyAfterDamage: 1
   _movementSpeed: 30
   _rotationSpeed: -720
+  _bounceCount: 0
   _throwHeight: 1
   _throwHeightOffset: -0.4375
   _fallSpeed: 24
@@ -358,6 +360,25 @@ MonoBehaviour:
     useScreenshake: 1
     screenshakeStrength: 0.5
     screenshakeDuration: 0.5
+--- !u!114 &4797553981795789799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003544196800082339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49255d46724617548811ba55b8dd2c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trailPrefab: {fileID: 4780779109044492468, guid: 83d80590781cdc842b5b5f8f5cb82861, type: 3}
+  _spriteToMimick: {fileID: 5665165387042954965}
+  _referenceBody: {fileID: 3231762434493913599}
+  _velocityThreshold: 15
+  _afterImagesPerSecond: 20
+  _afterImageFadeTime: 0.25
+  _afterImageStartingAlpha: 0.5
 --- !u!1 &5594366756183964087
 GameObject:
   m_ObjectHideFlags: 0

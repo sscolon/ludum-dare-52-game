@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 3362300178937036428}
   - component: {fileID: 7154920110392357217}
   - component: {fileID: 5205718631437599141}
+  - component: {fileID: 1793130629981576111}
   - component: {fileID: 6146948296481410209}
   m_Layer: 0
   m_Name: chr_probe
@@ -154,6 +155,7 @@ MonoBehaviour:
   _health:
     _value: 3
     _maxValue: 3
+    _immunityTime: 0
 --- !u!114 &7154920110392357217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +171,8 @@ MonoBehaviour:
   _heightTransform: {fileID: 1528797483197857448}
   _spawnHeight: 32
   _spawnSpeed: 1
+  _spawnStartSound: {fileID: 8300000, guid: 9df7201db10c3a8409b5577feaffbf55, type: 3}
+  _spawnFinishSound: {fileID: 8300000, guid: 5dd85bf13d0fcc34b9509dd5ad71c68d, type: 3}
   _attackRange: 3
   _movementSpeed: 5
   _acceleration: 12
@@ -193,7 +197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageFeedback:
     useRandomSound: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: f241592d150d60f40ac60057a0191e46, type: 3}
     useRandomSpawn: 0
     spawns: []
     useScreenshake: 0
@@ -201,17 +206,42 @@ MonoBehaviour:
     screenshakeDuration: 0.2
   _deathFeedback:
     useRandomSound: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: aa1a00a93a3b2a443b0bb182f22e76b0, type: 3}
     useRandomSpawn: 0
-    spawns: []
-    useScreenshake: 0
-    screenshakeStrength: 10
+    spawns:
+    - name: Death
+      inheritSpawnRotation: 0
+      prefab: {fileID: 8295540940968227175, guid: cf7a448dcda92cf409e40d03095ed517, type: 3}
+      spawn: {fileID: 2493812104600639422}
+    - name: Death Explosion
+      inheritSpawnRotation: 0
+      prefab: {fileID: 1469590401772203177, guid: 59b816a0ca34ea94d905f8aaccd1fcb5, type: 3}
+      spawn: {fileID: 2493812104600639422}
+    useScreenshake: 1
+    screenshakeStrength: 0.5
     screenshakeDuration: 0.2
   _spriteRenderer: {fileID: 3822842388124709564}
   _spriteWhiteMaterial: {fileID: 2100000, guid: 88146554ab3ddb34fa90451128ba1aef, type: 2}
   _flickerStartScale: {x: 0.8, y: 1.2, z: 1}
   _flickerSpeed: 15
   _damageNumberPrefab: {fileID: 1356892949315266288, guid: 5f955fe676a8da145a4693480b5f5152, type: 3}
+--- !u!114 &1793130629981576111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5097162978925989244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62dff9b872da13f4785b9e754834d1f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 3
+  _min: 3
+  _max: 6
+  _collectibleData: {fileID: 11400000, guid: c931ea3c51097ee4a8cb6e467a801ff2, type: 2}
 --- !u!95 &6146948296481410209
 Animator:
   serializedVersion: 4

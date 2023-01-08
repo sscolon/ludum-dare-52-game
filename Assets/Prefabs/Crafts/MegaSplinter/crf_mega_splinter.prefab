@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 4457798881979459840}
   - component: {fileID: 226032687090066626}
   - component: {fileID: 9220449554551073367}
+  - component: {fileID: -10941871257626262}
   m_Layer: 0
   m_Name: crf_mega_splinter
   m_TagString: Untagged
@@ -189,7 +190,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
 --- !u!114 &226032687090066626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +217,7 @@ MonoBehaviour:
   _destroyAfterDamage: 0
   _movementSpeed: 40
   _rotationSpeed: 0
+  _bounceCount: 0
   _throwHeight: 1
   _throwHeightOffset: -0.4375
   _fallSpeed: 8
@@ -233,7 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _harvestFeedback:
     useRandomSound: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: d68fafa6430f5324ebbd6857e876fc98, type: 3}
     useRandomSpawn: 0
     spawns: []
     useScreenshake: 0
@@ -241,7 +244,8 @@ MonoBehaviour:
     screenshakeDuration: 0.2
   _throwFeedback:
     useRandomSound: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 24853f3b88f9bb745a6410b691ca7a11, type: 3}
     useRandomSpawn: 0
     spawns: []
     useScreenshake: 0
@@ -250,16 +254,35 @@ MonoBehaviour:
   _deathFeedback:
     useRandomSound: 0
     sounds:
-    - {fileID: 8300000, guid: 2990b483d73be654c91386313fa62fef, type: 3}
+    - {fileID: 8300000, guid: 30a3532aa6adaa7489df960c3e71ff74, type: 3}
     useRandomSpawn: 0
     spawns:
-    - name: Iron Ball Fall
+    - name: Mega Splinter Fall
       inheritSpawnRotation: 0
-      prefab: {fileID: 3308879798091069026, guid: 132a953d3e41f154dbee4f3da3ad88bd, type: 3}
+      prefab: {fileID: 8559122559013200789, guid: 8a1a20f4f95e19d4f867f7ea7a57f972, type: 3}
       spawn: {fileID: 298158620085145418}
     useScreenshake: 1
     screenshakeStrength: 0.5
     screenshakeDuration: 0.5
+--- !u!114 &-10941871257626262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733887007882039900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49255d46724617548811ba55b8dd2c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trailPrefab: {fileID: 4780779109044492468, guid: 83d80590781cdc842b5b5f8f5cb82861, type: 3}
+  _spriteToMimick: {fileID: 5358360171268652330}
+  _referenceBody: {fileID: 2890056448638663168}
+  _velocityThreshold: 15
+  _afterImagesPerSecond: 20
+  _afterImageFadeTime: 0.25
+  _afterImageStartingAlpha: 0.5
 --- !u!1 &5027937091772639042
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ namespace Mechanizer
 
         public void Activate(GameManager context)
         {
+            Cursor.visible = true;
             StartCoroutine(SpawnRoutine(context));
         }
 
@@ -51,6 +52,12 @@ namespace Mechanizer
             }
             else
             {
+                if (_tips.Length == 0)
+                {
+                    _summary.text = "What? How?";
+                    return;
+                }
+             
                 int tipIndex = Random.Range(0, _tips.Length);
                 string tip = _tips[tipIndex];
                 _summary.text = tip;

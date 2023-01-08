@@ -10,6 +10,8 @@ namespace Mechanizer
         [SerializeField] private Transform _heightTransform;
         [SerializeField] private float _spawnHeight = 32;
         [SerializeField] private float _spawnSpeed;
+        [SerializeField] private AudioClip _spawnStartSound;
+        [SerializeField] private AudioClip _spawnFinishSound;
         public StateAnimator Animator { get; private set; }
         public Rigidbody2D Rigidbody { get; private set; }
 
@@ -21,6 +23,7 @@ namespace Mechanizer
             Rigidbody = GetComponent<Rigidbody2D>();
             Animator = new StateAnimator(GetComponent<Animator>());
             Target = GameObject.FindGameObjectWithTag("Player");
+        
             StartCoroutine(SpawnRoutine());
         }
 
@@ -44,6 +47,14 @@ namespace Mechanizer
             FixedUpdateAI();
         }
 
+        private void PlaySound(AudioClip audioClip)
+        {
+            SoundSettings settings = SoundSettings.CreateDefaultSound(audioClip);
+            settings.useVolumeLoss = true;
+            settings.transform = transform;
+            SoundManager.PlaySound(settings);
+        }
+
         protected void Move(Vector2 targetSpeed, float acceleration, float deceleration)
         {
             Vector2 diff = targetSpeed - Rigidbody.velocity;
@@ -58,6 +69,7 @@ namespace Mechanizer
 
         private IEnumerator SpawnRoutine()
         {
+            PlaySound(_spawnStartSound);
             float time = 0f;
             while (time < 1.0f)
             {
@@ -66,6 +78,7 @@ namespace Mechanizer
                 _heightTransform.localPosition = new Vector3(_heightTransform.localPosition.x, height);
                 yield return null;
             }
+            PlaySound(_spawnFinishSound);
             _hasSpawned = true;
         }
 

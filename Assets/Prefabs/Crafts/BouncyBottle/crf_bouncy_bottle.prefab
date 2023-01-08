@@ -105,8 +105,8 @@ SpriteRenderer:
   m_SortingLayerID: -378559201
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c3a54b0a628a70644842b212407da47b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 25735552b90d16840bbb15863ef4bc2c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 2985141057877096794}
   - component: {fileID: 1698725704207119512}
   - component: {fileID: 7729742165028026893}
+  - component: {fileID: 2088074262522052165}
   m_Layer: 0
   m_Name: crf_bouncy_bottle
   m_TagString: Untagged
@@ -332,7 +333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _harvestFeedback:
     useRandomSound: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 0cd9d75ea8d122d4eb024aa52f0120c9, type: 3}
     useRandomSpawn: 0
     spawns: []
     useScreenshake: 0
@@ -340,7 +342,8 @@ MonoBehaviour:
     screenshakeDuration: 0.2
   _throwFeedback:
     useRandomSound: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: aae924d0992120e4b917dec9dae255e9, type: 3}
     useRandomSpawn: 0
     spawns: []
     useScreenshake: 0
@@ -349,16 +352,39 @@ MonoBehaviour:
   _deathFeedback:
     useRandomSound: 0
     sounds:
-    - {fileID: 8300000, guid: 2990b483d73be654c91386313fa62fef, type: 3}
+    - {fileID: 8300000, guid: 1729de29674180342ad631254b391935, type: 3}
     useRandomSpawn: 0
     spawns:
-    - name: Iron Ball Fall
+    - name: Bouncy Ball Fall
       inheritSpawnRotation: 0
-      prefab: {fileID: 3308879798091069026, guid: 132a953d3e41f154dbee4f3da3ad88bd, type: 3}
+      prefab: {fileID: 1557208688601986079, guid: 1f5e74fa8491a414ba4f892053b101f1, type: 3}
+      spawn: {fileID: 1194390824533827344}
+    - name: Bouncy Ball Bits
+      inheritSpawnRotation: 0
+      prefab: {fileID: 5433881577095769886, guid: cec65ededec5cef4bb4895bc9a2ac44a, type: 3}
       spawn: {fileID: 1194390824533827344}
     useScreenshake: 1
     screenshakeStrength: 0.5
     screenshakeDuration: 0.5
+--- !u!114 &2088074262522052165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6125516339740344838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49255d46724617548811ba55b8dd2c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trailPrefab: {fileID: 4780779109044492468, guid: 83d80590781cdc842b5b5f8f5cb82861, type: 3}
+  _spriteToMimick: {fileID: 6840028440954400112}
+  _referenceBody: {fileID: 4371757773245475418}
+  _velocityThreshold: 15
+  _afterImagesPerSecond: 20
+  _afterImageFadeTime: 0.25
+  _afterImageStartingAlpha: 0.5
 --- !u!1 &6760240227051506194
 GameObject:
   m_ObjectHideFlags: 0
