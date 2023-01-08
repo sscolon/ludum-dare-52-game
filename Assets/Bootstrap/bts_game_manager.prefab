@@ -47,8 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _seed: 0
+  _scoreTimeRate: 1
+  _scoreTimeBonus: 1
   _waveManager: {fileID: 3375915462473277238}
   _playerManager: {fileID: 2333701272427993562}
+  _deathManager: {fileID: 0}
 --- !u!114 &3375915462473277238
 MonoBehaviour:
   m_ObjectHideFlags: 0

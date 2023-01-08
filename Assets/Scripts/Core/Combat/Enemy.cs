@@ -19,6 +19,7 @@ namespace Mechanizer
 
         private void Die()
         {
+            GameManager.Main.Score += 150;
             Destroy(gameObject);
         }
 

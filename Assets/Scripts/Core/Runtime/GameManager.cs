@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Mechanizer
@@ -6,10 +7,16 @@ namespace Mechanizer
     public class GameManager : MonoBehaviour
     {
         private int _score;
+        private int _scoreDifficultyMultiplier=1;
         private Rand _rand;
+        private Coroutine _scoreRoutine;
+        private PlayerEntity _player;
         [SerializeField] private int _seed;
+        [SerializeField] private float _scoreTimeRate;
+        [SerializeField] private int _scoreTimeBonus;
         [SerializeField] private WaveManager _waveManager;
         [SerializeField] private PlayerManager _playerManager;
+        [SerializeField] private DeathManager _deathManager;
         public int Seed { get => _seed; }
         public int Score
         {
@@ -49,13 +56,16 @@ namespace Mechanizer
             _waveManager.OnWaveComplete -= NextWaveRoutine;
         }
 
+
         public void NewGame()
         {
             _rand = new Rand(_seed);
             
             var player = _playerManager.NewPlayer();
             player.transform.position = Vector3.zero;
-
+            _player = player.GetComponentInChildren<PlayerEntity>();
+            _player.Health.OnDeath += HandleDeath;
+            _scoreRoutine = StartCoroutine(IncreaseScoreRoutine());
             //Incase we want to override seed.
             Debug.Log($"Seed: {_rand.Seed}");
             NextWaveRoutine();
@@ -66,6 +76,27 @@ namespace Mechanizer
             //We're gonna have a cooldown to the next wave later.
             //I'm thinking like 2 or 3 seconds. That'd be good.
             _waveManager.NextWave(_rand);
+        }
+
+        private void HandleDeath()
+        {
+            StopCoroutine(_scoreRoutine);
+            _deathManager.Activate(this);
+        }
+
+        private IEnumerator IncreaseScoreRoutine()
+        {
+            float time = 0f;
+            while (true)
+            {
+                time += Time.deltaTime;
+                if(time >= _scoreTimeRate)
+                {
+                    time = 0f;
+                    Score += _scoreTimeBonus * _scoreDifficultyMultiplier;
+                }
+                yield return null;
+            }
         }
     }
 }

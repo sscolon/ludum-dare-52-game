@@ -93,6 +93,7 @@ namespace Mechanizer
 
                 collectible.IsCollected = true;
                 AddComponent(collectible.CollectibleId);
+                GameManager.Main.Score += 50;
                 ComponentSprites.Add(collectible.Icon);
                 OnCollect?.Invoke(collectible);
                 collectible.Collect();
