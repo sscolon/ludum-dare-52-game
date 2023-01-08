@@ -314,10 +314,10 @@ MonoBehaviour:
   _destroyAfterDamage: 1
   _movementSpeed: 20
   _rotationSpeed: -720
-  _bounceCount: 3
+  _bounceCount: 7
   _throwHeight: 1
   _throwHeightOffset: -0.4375
-  _fallSpeed: 4
+  _fallSpeed: 0.25
 --- !u!114 &7729742165028026893
 MonoBehaviour:
   m_ObjectHideFlags: 0

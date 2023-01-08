@@ -247,7 +247,8 @@ MonoBehaviour:
   _heightTransform: {fileID: 3228434918768612134}
   _destroyAfterDamage: 1
   _movementSpeed: 30
-  _rotationSpeed: -720
+  _rotationSpeed: -1440
+  _bounceCount: 0
   _throwHeight: 1
   _throwHeightOffset: -0.4375
   _fallSpeed: 24
