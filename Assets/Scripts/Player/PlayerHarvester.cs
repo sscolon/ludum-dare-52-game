@@ -90,6 +90,8 @@ namespace Mechanizer
             {
                 if (collectible.IsCollected)
                     return;
+                if (!collectible.HasSpawned)
+                    return;
 
                 collectible.IsCollected = true;
                 AddComponent(collectible.CollectibleId);

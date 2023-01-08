@@ -7,7 +7,7 @@ namespace Mechanizer
         private Vector3 _size;
         private float _startY;
         [SerializeField] private Transform _referenceTransform;
-        private void Start()
+        private void OnEnable()
         {
             _startY = _referenceTransform.transform.localPosition.y;
             _size = Vector3.one;

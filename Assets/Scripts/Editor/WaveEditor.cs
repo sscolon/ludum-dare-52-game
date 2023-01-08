@@ -41,10 +41,13 @@ public class WaveEditor : EditorWindow
     }
     private void GetTarget()
     {
-        Wave[] spawners = Resources.FindObjectsOfTypeAll<Wave>();
-        if (spawners.Length == 0)
-            return;
-        _target = spawners[0];
+        if(Selection.activeGameObject != null)
+        {
+            if(Selection.activeGameObject.TryGetComponent(out Wave wave))
+            {
+                _target = wave;
+            }
+        }
     }
 
     private void RefreshPalette()
