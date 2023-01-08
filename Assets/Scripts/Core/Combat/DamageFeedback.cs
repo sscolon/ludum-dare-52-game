@@ -18,6 +18,9 @@ namespace Mechanizer
         [SerializeField] private Material _spriteWhiteMaterial;
         [SerializeField] private Vector3 _flickerStartScale = new Vector3(0.8f, 1.2f, 1f);
         [SerializeField] private float _flickerSpeed = 15f;
+
+        [Header("Damage Number")]
+        [SerializeField] private DamageNumber _damageNumberPrefab;
         private void OnEnable()
         {
             if (_damageable == null)
@@ -36,6 +39,8 @@ namespace Mechanizer
         private void PlayDamageFeedback(float damageValue)
         {
             _damageFeedback.CreateFeedback(gameObject);
+            DamageNumber number = Instantiate(_damageNumberPrefab, transform.position, _damageNumberPrefab.transform.rotation);
+            number.SetDamage(damageValue.ToString());
             DoFlicker();
         }
 

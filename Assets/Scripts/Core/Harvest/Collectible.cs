@@ -14,13 +14,13 @@ namespace Mechanizer
 
         [Header("Collectible Stats")]
         [SerializeField] private Sprite _icon;
-        [SerializeField] private string _collectibleTag;
+        [SerializeField] private int _collectibleId;
         [SerializeField] private float _spawnSpeed = 3f;
         [SerializeField] private float _collectSpeed = 3f;
         [SerializeField] private int _weight;
 
         public Sprite Icon { get => _icon; set => _icon = value; }
-        public string CollectibleTag { get => _collectibleTag; set => _collectibleTag = value; }
+        public int CollectibleId { get => _collectibleId; set => _collectibleId = value; }
         public bool IsCollected { get => _isCollected; set => _isCollected = value; }
 
         public event Action OnSpawn;

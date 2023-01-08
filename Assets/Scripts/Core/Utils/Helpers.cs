@@ -31,5 +31,19 @@ namespace Mechanizer
         {
             _camera = null;
         }
+
+        public static Quaternion LookAt(Transform target, Transform transform)
+        {
+            Vector3 dir = target.position - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            return Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
+        public static Quaternion LookAt(Vector3 target, Transform transform)
+        {
+            Vector3 dir = target - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            return Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 }

@@ -71,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -378559201
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 667382688, guid: dba7ef3da4f1b214cbef8ba36059578f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 3980030794360195457}
   - component: {fileID: 8779522593725704375}
   - component: {fileID: 1197302179738521838}
+  - component: {fileID: 8505765105808650183}
   m_Layer: 0
   m_Name: chr_test_enemy
   m_TagString: Untagged
@@ -169,5 +170,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health:
-    _value: 1
-    _maxValue: 1
+    _value: 3
+    _maxValue: 3
+--- !u!114 &8505765105808650183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685230874469098270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb9d1437ff3df4bb4f4bfd9fbe970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageFeedback:
+    useRandomSound: 0
+    sounds: []
+    useRandomSpawn: 0
+    spawns: []
+    useScreenshake: 0
+    screenshakeStrength: 10
+    screenshakeDuration: 0.2
+  _deathFeedback:
+    useRandomSound: 0
+    sounds: []
+    useRandomSpawn: 0
+    spawns: []
+    useScreenshake: 0
+    screenshakeStrength: 10
+    screenshakeDuration: 0.2
+  _spriteRenderer: {fileID: 808843815432559838}
+  _spriteWhiteMaterial: {fileID: 2100000, guid: 88146554ab3ddb34fa90451128ba1aef, type: 2}
+  _flickerStartScale: {x: 0.8, y: 1.2, z: 1}
+  _flickerSpeed: 15
+  _damageNumberPrefab: {fileID: 1356892949315266288, guid: 5f955fe676a8da145a4693480b5f5152, type: 3}

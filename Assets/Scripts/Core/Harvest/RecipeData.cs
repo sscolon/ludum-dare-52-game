@@ -7,7 +7,7 @@ namespace Mechanizer
     {
         [SerializeField] private Recipe _defaultRecipe;
         [SerializeField] private Recipe[] _specialRecipes;
-        public Recipe FindBestRecipe(string[] tags)
+        public Recipe FindBestRecipe(int[] tags)
         {
             for(int i = 0; i < _specialRecipes.Length; i++)
             {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mechanizer
@@ -11,28 +7,42 @@ namespace Mechanizer
     public class Recipe : ScriptableObject
     {
         [SerializeField] private GameObject _prefab;
-        [SerializeField] private List<string> _tags;
+        [SerializeField] private List<int> _ingredients;
         [SerializeField] private bool _requireOrder;
 
         public GameObject Prefab => _prefab;
-        public List<string> Tags => _tags;
-        public bool IsMatch(string[] tags)
+        public bool IsMatch(int[] ingredients)
         {
+            int anyCount = 0;
+            for (int i = 0; i < _ingredients.Count; i++)
+            {
+
+                if (_ingredients[i] == -1)
+                    anyCount++;
+            }
+
             if (_requireOrder)
             {
-                for (int i = 0; i < _tags.Count && i < tags.Length; i++)
+                for (int i = 0; i < _ingredients.Count && i < ingredients.Length; i++)
                 {
-                    string tag = _tags[i];
-                    if (tags[i] != tag)
+                    if (ingredients[i] == -1)
+                        continue;
+                    var ingredient = _ingredients[i];
+                    if (ingredients[i] != ingredient)
                         return false;
                 }
             }
             else
             {
-                for(int i = 0; i < tags.Length; i++)
+                for (int i = 0; i < ingredients.Length; i++)
                 {
-                    if (!_tags.Contains(tags[i]))
-                        return false;
+                    if (!_ingredients.Contains(ingredients[i]))
+                    {
+                        if (anyCount <= 0)
+                            return false;
+                        else
+                            anyCount--;
+                    }
                 }
             }
 

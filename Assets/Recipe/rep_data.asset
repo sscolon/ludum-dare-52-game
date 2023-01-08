@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: rep_data
   m_EditorClassIdentifier: 
   _defaultRecipe: {fileID: 11400000, guid: ba9a83dd295e59f49a3ec3aedc0a93bd, type: 2}
-  _specialRecipes: []
+  _specialRecipes:
+  - {fileID: 11400000, guid: 3aae06bd38f47d94898c8bbc4db218dd, type: 2}
+  - {fileID: 11400000, guid: 4e18edbfe343e684fa9ac566d63c60fc, type: 2}

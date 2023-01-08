@@ -7,7 +7,7 @@ namespace Mechanizer
     {
         [SerializeField] private RecipeData _recipeData;
         [SerializeField] private Transform _craftTransform;
-        private string[] _components = new string[3];
+        private int[] _components = new int[3];
         public Transform CraftTransform { get => _craftTransform; }
         public event Action<Collectible> OnCollect;
         private void Start()
@@ -33,7 +33,7 @@ namespace Mechanizer
           //  ClearComponents();
         }
 
-        private void AddComponent(string tag)
+        private void AddComponent(int tag)
         {
             int i = GetFreeComponent();
             if (i == -1)
@@ -56,7 +56,7 @@ namespace Mechanizer
         {
             for (int i = 0; i < _components.Length; i++)
             {
-                _components[i] = string.Empty;
+                _components[i] = -1;
             }
         }
 
@@ -64,7 +64,7 @@ namespace Mechanizer
         {
             for (int i = 0; i < _components.Length; i++)
             {
-                if (string.IsNullOrEmpty(_components[i]))
+                if (_components[i] == -1)
                     return i;
             }
 
@@ -83,7 +83,7 @@ namespace Mechanizer
                     return;
 
                 collectible.IsCollected = true;
-                AddComponent(collectible.CollectibleTag);
+                AddComponent(collectible.CollectibleId);
                 OnCollect?.Invoke(collectible);
                 collectible.Collect();
             }
