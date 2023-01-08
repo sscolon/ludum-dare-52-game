@@ -276,8 +276,8 @@ MonoBehaviour:
       prefab: {fileID: 1384404273812806334, guid: 5f7c566a5d1c8304ab392a0538f83fe1, type: 3}
       spawn: {fileID: 5303420229405310121}
     useScreenshake: 1
-    screenshakeStrength: 0.5
-    screenshakeDuration: 0.5
+    screenshakeStrength: 0.125
+    screenshakeDuration: 0.2
 --- !u!114 &3179167624607423372
 MonoBehaviour:
   m_ObjectHideFlags: 0
