@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Mechanizer
 {
@@ -17,9 +18,16 @@ namespace Mechanizer
             }
         }
 
-        public Wave NextWave(Rand rand)
+        public Wave NextWave(Rand rand, int difficulty)
         {
-            Wave wave = rand.Next(_waves);
+            List<Wave> waves = new List<Wave>();
+            for(int i = 0; i < _waves.Length; i++)
+            {
+                Wave w = _waves[i];
+                if (w.difficulty <= difficulty)
+                    waves.Add(w);
+            }
+            Wave wave = rand.Next(waves.ToArray());
             return wave;
         }
     }

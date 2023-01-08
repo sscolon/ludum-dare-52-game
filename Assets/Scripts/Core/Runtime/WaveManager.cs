@@ -13,11 +13,13 @@ namespace Mechanizer
         public int WaveIndex { get => _waveIndex; }
         public int RequiredKills { get => _requiredKills; }
 
+        public int Difficulty { get; private set; } = 0;
+
         public event Action OnWaveComplete;
         public void NextWave(Rand rand)
         {
             _waveIndex++;
-            _currentWave = _waveData.NextWave(rand);
+            _currentWave = _waveData.NextWave(rand, Difficulty);
             Debug.Log(_currentWave);
             _requiredKills = _currentWave.GetEnemyCount();
 
@@ -41,6 +43,7 @@ namespace Mechanizer
                     }
                 }
             }
+            Difficulty += 1;
         }
     }
 }
