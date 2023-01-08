@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mechanizer
@@ -9,9 +10,15 @@ namespace Mechanizer
         [SerializeField] private Transform _craftTransform;
         private int[] _components = new int[3];
         public Transform CraftTransform { get => _craftTransform; }
+
+        public int ComponentCount { get; private set; } = 3;
+        public int[] Components => _components;
+        public List<Sprite> ComponentSprites { get; private set; }
+        public event Action OnClear;
         public event Action<Collectible> OnCollect;
         private void Start()
         {
+            ComponentSprites = new List<Sprite>();
             ClearComponents();
         }
 
@@ -58,6 +65,8 @@ namespace Mechanizer
             {
                 _components[i] = -1;
             }
+            ComponentSprites.Clear();
+            OnClear?.Invoke();
         }
 
         private int GetFreeComponent()
@@ -84,6 +93,7 @@ namespace Mechanizer
 
                 collectible.IsCollected = true;
                 AddComponent(collectible.CollectibleId);
+                ComponentSprites.Add(collectible.Icon);
                 OnCollect?.Invoke(collectible);
                 collectible.Collect();
             }
