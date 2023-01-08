@@ -26,7 +26,7 @@ namespace Mechanizer
             float time = 0f;
             while (time < 1.0f)
             {
-                time += Time.deltaTime;
+                time += Time.deltaTime*3f;
                 _deathParent.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, time);
                 yield return null;
             }

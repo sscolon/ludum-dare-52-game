@@ -1371,7 +1371,13 @@ MonoBehaviour:
   _deathParent: {fileID: 1635359903}
   _score: {fileID: 350991090}
   _summary: {fileID: 9429861}
-  _tips: []
+  _tips:
+  - Mixing 3 different components creates junk, that deals very little damage! Don't
+    do that!
+  - Trying using x3 wood for large groups of enemies!
+  - Trying using x3 metal for strong enemies!!
+  - Trying using x3 plastic for far apart enemies!
+  - Remember to make use of your dodge roll to get away from enemies!
 --- !u!114 &1836893467
 MonoBehaviour:
   m_ObjectHideFlags: 0

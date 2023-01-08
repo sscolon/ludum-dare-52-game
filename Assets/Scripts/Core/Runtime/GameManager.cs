@@ -7,7 +7,6 @@ namespace Mechanizer
     public class GameManager : MonoBehaviour
     {
         private int _score;
-        private int _scoreDifficultyMultiplier=1;
         private Rand _rand;
         private Coroutine _scoreRoutine;
         private PlayerEntity _player;
@@ -92,10 +91,11 @@ namespace Mechanizer
             while (true)
             {
                 time += Time.deltaTime;
+                int difficultyMultiplier = Mathf.Clamp(_waveManager.Difficulty, 0, 10);
                 if(time >= _scoreTimeRate)
                 {
                     time = 0f;
-                    Score += _scoreTimeBonus * _scoreDifficultyMultiplier;
+                    Score += _scoreTimeBonus * difficultyMultiplier;
                 }
                 yield return null;
             }
