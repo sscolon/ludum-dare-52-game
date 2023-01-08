@@ -36,7 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Wall
   - PostProcessing
   m_SortingLayers:
   - name: Default

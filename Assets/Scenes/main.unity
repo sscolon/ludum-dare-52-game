@@ -1590,7 +1590,7 @@ GameObject:
   - component: {fileID: 2041143033}
   - component: {fileID: 2041143032}
   - component: {fileID: 2041143031}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: ground
   m_TagString: World
   m_Icon: {fileID: 0}

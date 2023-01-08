@@ -422,9 +422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dff9b872da13f4785b9e754834d1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 3
+  _radius: 4
   _min: 4
-  _max: 8
+  _max: 10
   _collectibleData: {fileID: 11400000, guid: c931ea3c51097ee4a8cb6e467a801ff2, type: 2}
 --- !u!95 &502552553302393749
 Animator:
