@@ -5,12 +5,14 @@ namespace Mechanizer
 {
     public class Throwable : Attack, IHarvested
     {
+        private Vector2 _targetDirection;
         private Vector2 _targetSpeed;
         private ThrowableState _state;
         private PlayerHarvester _harvester;
         private float _height;
         private float _gravity;
-
+        private int _bounces;
+        
         [Header("Throwable Components")]
         [SerializeField] private Rigidbody2D _throwableBody;
         [SerializeField] private Transform _rotatorTransform;
@@ -20,6 +22,8 @@ namespace Mechanizer
         [Header("Movement")]
         [SerializeField] private float _movementSpeed;
         [SerializeField] private float _rotationSpeed = 20f;
+        [SerializeField] private int _bounceCount;
+
 
         [Header("Gravity")]
         [SerializeField] private float _throwHeight;
@@ -78,9 +82,23 @@ namespace Mechanizer
                 case ThrowableState.Thrown:
                     if (DoDamage(collision) || collision.gameObject.CompareTag("World"))
                     {
-                        if (_destroyAfterDamage)
+                        if(_bounces <= 0)
                         {
-                            Kill();
+                            if (_destroyAfterDamage)
+                            {
+                                Kill();
+                            }
+                        }
+                        else
+                        {
+                            _bounces--;
+                            //JUST RANDOM FOR NOW OKAY
+                            float bounceX = UnityEngine.Random.Range(-1f, 1f);
+                            float bounceY = UnityEngine.Random.Range(-1f, 1f);
+                            Vector3 bounce = transform.position + new Vector3(bounceX, bounceY);
+                            Vector2 direction = (bounce - transform.position).normalized;
+                            _targetDirection = direction;
+                            _targetSpeed = _targetDirection * MovementSpeed;
                         }
                     }
         
@@ -94,6 +112,7 @@ namespace Mechanizer
             transform.SetParent(context.CraftTransform);
             transform.localScale = Vector3.one;
             _state = ThrowableState.Held;
+            _bounces = _bounceCount;
             OnHarvest?.Invoke();
         }
 
@@ -111,6 +130,7 @@ namespace Mechanizer
         private void ThrowInDirection(Vector2 direction)
         {
             transform.SetParent(null);
+            _targetDirection = direction;
             _targetSpeed = direction * MovementSpeed;
             _state = ThrowableState.Thrown;
             _height = _throwHeight;

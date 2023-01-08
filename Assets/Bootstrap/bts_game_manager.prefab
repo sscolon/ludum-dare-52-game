@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3375915462473277240}
   - component: {fileID: 3375915462473277239}
   - component: {fileID: 3375915462473277238}
+  - component: {fileID: 2333701272427993562}
   m_Layer: 0
   m_Name: bts_game_manager
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _seed: 0
   _waveManager: {fileID: 3375915462473277238}
+  _playerManager: {fileID: 2333701272427993562}
 --- !u!114 &3375915462473277238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,3 +62,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waveData: {fileID: 11400000, guid: a5fdb95df18e3ad4aac311bd29ee3eb8, type: 2}
+--- !u!114 &2333701272427993562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3375915462473277237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1adc734b35e264999a4dbb66acb358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerPrefab: {fileID: 0}
